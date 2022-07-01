@@ -1,0 +1,18 @@
+type Feed {
+  feed_id: Number!
+  writer_nickname: String!
+  writer_id: String!
+  title: String!
+  content: String
+  comment: [Comment]
+}
+
+type Comment {
+  writer: String!
+  password: String!
+  content: String
+}
+
+type Query {
+  getAllFeeds: [Feed]
+}

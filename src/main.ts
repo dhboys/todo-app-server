@@ -5,6 +5,6 @@ import { setupSwagger } from './common/swagger/setup-swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   setupSwagger(app);
-  await app.listen(4000);
+  await app.listen(9001);
 }
 bootstrap();

@@ -12,5 +12,4 @@ import { GraphQLModule } from '@nestjs/graphql';
     FeedModule,
   ],
 })
-// export class AppModule {}
 export class AppModule {}

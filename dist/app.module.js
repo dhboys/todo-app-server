@@ -18,9 +18,9 @@ AppModule = __decorate([
         imports: [
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
-                autoSchemaFile: './**/*.graphql',
+                autoSchemaFile: '../feed.graphql',
             }),
-            feed_module_1.FeedModule
+            feed_module_1.FeedModule,
         ],
     })
 ], AppModule);

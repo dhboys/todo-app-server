@@ -6,7 +6,7 @@ const setup_swagger_1 = require("./common/swagger/setup-swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     (0, setup_swagger_1.setupSwagger)(app);
-    await app.listen(5000);
+    await app.listen(4000);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

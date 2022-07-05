@@ -7,11 +7,10 @@ import { GraphQLModule } from '@nestjs/graphql';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: './**/*.graphql',
+      autoSchemaFile: '../feed.graphql',
     }),
-    FeedModule
+    FeedModule,
   ],
 })
 // export class AppModule {}
-
 export class AppModule {}

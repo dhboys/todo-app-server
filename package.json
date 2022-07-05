@@ -9,8 +9,8 @@
     "start:dev": "NODE_ENV=development nest start --watch",
     "start:debug": "NODE_ENV=development nest start --debug --watch",
     "start:prod": "npm run build && NODE_ENV=production node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "format": "prettier --write \"**/*.ts\" \"**/*.js\""
+    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"**/*.js\""
   },
   "author": "",
   "license": "ISC",

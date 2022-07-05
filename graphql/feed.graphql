@@ -14,5 +14,9 @@ type Comment {
 }
 
 type Query {
-  getAllFeeds: [Feed]
+  sayHello: String!
+}
+
+type Mutation {
+  
 }

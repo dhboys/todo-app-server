@@ -1,7 +1,7 @@
 import { Query, Resolver } from '@nestjs/graphql';
 
 @Resolver('Feed')
-export class PersonResolver {
+export class FeedResolver {
   @Query()
   async getAllFeeds() {
     return [
@@ -12,12 +12,12 @@ export class PersonResolver {
         title: 'testFeed',
         content: 'testContent, testContent, testContent, testContent, testContent, testContent',
         comment: [
-            {  
-                writer: 'comment_writer',
-                password: '123456',
-                content: 'testComment, testComment, testComment, testComment, testComment, testComment'
-            }
-        ]
+          {
+            writer: 'comment_writer',
+            password: '123456',
+            content: 'testComment, testComment, testComment, testComment, testComment, testComment',
+          },
+        ],
       },
     ];
   }

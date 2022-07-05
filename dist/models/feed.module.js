@@ -6,23 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
-const feed_module_1 = require("./models/feed.module");
-const apollo_1 = require("@nestjs/apollo");
+exports.FeedModule = void 0;
 const common_1 = require("@nestjs/common");
-const graphql_1 = require("@nestjs/graphql");
-let AppModule = class AppModule {
+const feed_resolver_1 = require("../resolver/feed.resolver");
+let FeedModule = class FeedModule {
 };
-AppModule = __decorate([
+FeedModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            graphql_1.GraphQLModule.forRoot({
-                driver: apollo_1.ApolloDriver,
-                autoSchemaFile: './**/*.graphql',
-            }),
-            feed_module_1.FeedModule
-        ],
+        providers: [feed_resolver_1.FeedResolver],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], FeedModule);
+exports.FeedModule = FeedModule;
+//# sourceMappingURL=feed.module.js.map

@@ -1,13 +1,15 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    ConfigService,
+    ConfigModule.forRoot({
+      envFilePath: `.${process.env.NODE_ENV}.env`,
+    }),
     MongooseModule.forRootAsync({
       useFactory: () => ({
-        uri: `mongodb+srv://root:X5ZmQqFn77wjkiF@todo-cluster.xlrmv.mongodb.net/?retryWrites=true&w=majority`,
+        uri: `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DB_NAME}.xlrmv.mongodb.net/?retryWrites=true&w=majority`,
       }),
     }),
   ],

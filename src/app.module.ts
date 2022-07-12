@@ -9,12 +9,7 @@ import { SharedModule } from './common/shared.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath:
-        process.env.NODE_ENV === 'development'
-          ? '.env.development'
-          : process.env.NODE_ENV === 'test'
-          ? '.env.test'
-          : null,
+      envFilePath: `${process.env.NODE_ENV}.env`,
       isGlobal: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

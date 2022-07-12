@@ -18,6 +18,6 @@ export class Feed {
   @Field()
   creationDate: Date;
 
-  @Field({ nullable: true })
-  comments?: [Comment?];
+  @Field(() => [Comment], { nullable: true })
+  comments: [Comment] | [];
 }

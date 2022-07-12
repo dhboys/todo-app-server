@@ -19,7 +19,7 @@ export class Feed {
   creationDate: Date;
 
   @Prop({ type: Comment, required: false })
-  comments?: [Comment?];
+  comments: [Comment] | [];
 }
 
 export const FeedSchema = SchemaFactory.createForClass(Feed);

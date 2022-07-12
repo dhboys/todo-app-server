@@ -12,13 +12,13 @@ import { SharedModule } from './common/shared.module';
       envFilePath: `${process.env.NODE_ENV}.env`,
       isGlobal: true,
     }),
+    DatabaseModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: '../feed.graphql',
     }),
     SharedModule,
     FeedModule,
-    DatabaseModule,
   ],
 })
 export class AppModule {}

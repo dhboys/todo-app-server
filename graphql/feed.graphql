@@ -30,8 +30,9 @@ type AddComment {
 }
 
 type Query {
-  feed(id: String!): Feed!
-  feeds(skip: Int = 0, take: Int = 25): [Feed!]!
+  sayHello: String!
+  # feed(id: String!): Feed!
+  # feeds(skip: Int = 0, take: Int = 25): [Feed!]!
 }
 
 type Mutation {

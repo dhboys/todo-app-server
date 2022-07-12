@@ -2,7 +2,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { Module } from '@nestjs/common';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { FeedModule } from './feed/models/feed.module';
+import { FeedModule } from './feed/modules/feed.module';
 import { DatabaseModule } from './database/mongo.module';
 import { SharedModule } from './common/shared.module';
 

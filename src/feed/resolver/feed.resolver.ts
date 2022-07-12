@@ -6,6 +6,7 @@ export class FeedResolver {
   sayHello(): string {
     return 'Hello World!';
   }
+
   // @Query()
   // async getAllFeeds() {
   //   return [

@@ -1,13 +1,29 @@
+scalar Date
+
 type Feed {
-  feed_id: Number!
-  writer_nickname: String!
-  writer_id: String!
+  _id: ObjectId!
+  writer: String!
   title: String!
   content: String
-  comment: [Comment]
+  creationDate: Date!
+  comments: [Comment]
+}
+
+type NewFeed {
+  writer: String!
+  title: String!
+  content: String
 }
 
 type Comment {
+  _id: ObjectId
+  writer: String
+  password: String
+  content: String
+  creationDate: Date
+}
+
+type AddComment {
   writer: String!
   password: String!
   content: String
@@ -15,8 +31,11 @@ type Comment {
 
 type Query {
   sayHello: String!
+  # feed(id: String!): Feed!
+  # feeds(skip: Int = 0, take: Int = 25): [Feed!]!
 }
 
 type Mutation {
-  
+  addFeed(newFeed: NewFeed!): Feed!
+  removeFeed(id: NewFeed!): Boolean!
 }

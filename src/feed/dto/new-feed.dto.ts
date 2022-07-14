@@ -1,17 +1,20 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsOptional, Length, MaxLength } from 'class-validator';
+import { IsOptional, IsString, MaxLength } from 'class-validator';
 
 @InputType()
 export class NewFeed {
   @Field()
+  @IsString()
   writer: string;
 
   @Field()
   @MaxLength(30)
+  @IsString()
   title: string;
 
   @Field({ nullable: true })
   @IsOptional()
-  @Length(500)
+  @MaxLength(500)
+  @IsString()
   content?: string;
 }

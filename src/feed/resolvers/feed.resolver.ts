@@ -15,10 +15,15 @@ export class FeedResolver {
     return 'Hello World!';
   }
 
-  @Mutation((returns) => Feed)
-  async addFeed(@Args('newFeedData') newRecipeData: NewFeed): Promise<Feed> {
-    const recipe = await this.feedService.createFeed(newRecipeData);
-    pubSub.publish('recipeAdded', { recipeAdded: recipe });
-    return recipe;
+  @Mutation((returns) => Feed, { description: 'feed' })
+  async addFeed(
+    @Args('writer') writer: string,
+    @Args('title') title: string,
+    @Args('content') content: string
+  ): Promise<Feed> {
+    const newFeedData: NewFeed = { writer: writer, title: title, content: content };
+    const feed = await this.feedService.createFeed(newFeedData);
+    pubSub.publish('feedAdded', { feedAdded: feed });
+    return feed;
   }
 }

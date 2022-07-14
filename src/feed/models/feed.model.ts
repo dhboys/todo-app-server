@@ -10,6 +10,7 @@ export class Feed {
   writer: string;
 
   @Directive('@upper')
+  @Field()
   title: string;
 
   @Field({ nullable: true })

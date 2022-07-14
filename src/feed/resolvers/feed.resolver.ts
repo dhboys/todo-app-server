@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Feed } from '../models/feed.model';
 import { PubSub } from 'graphql-subscriptions';
-import { NewFeed } from '../dto/new-feed.dto';
+import { NewFeedDto } from '../dto/new-feed.input';
+import { Feed } from '../schema/feed.schema';
 import { FeedService } from '../services/feed.service';
 
 const pubSub = new PubSub();
@@ -21,8 +21,8 @@ export class FeedResolver {
     @Args('title') title: string,
     @Args('content') content: string
   ): Promise<Feed> {
-    const newFeedData: NewFeed = { writer: writer, title: title, content: content };
-    const feed = await this.feedService.createFeed(newFeedData);
+    const newFeedDNewFeedDtoData: NewFeedDto = { writer: writer, title: title, content: content };
+    const feed = await this.feedService.createFeed(newFeedDNewFeedDtoData);
     pubSub.publish('feedAdded', { feedAdded: feed });
     return feed;
   }

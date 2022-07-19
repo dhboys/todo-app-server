@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { NewFeedDto } from '../dto/new-feed.input';
@@ -10,6 +10,14 @@ export class FeedService {
 
   async getAllFeeds(): Promise<Feed[]> {
     return await this.feedModel.find().exec();
+  }
+
+  async getFeedById(id: string): Promise<Feed> {
+    const feed = await this.feedModel.findOne({ _id: id }).exec();
+    if (!feed) {
+      throw new NotFoundException(`Feed ${id} not found`);
+    }
+    return feed;
   }
 
   async createFeed(newFeedDto: NewFeedDto): Promise<Feed> {

@@ -15,6 +15,11 @@ export class FeedResolver {
     return this.feedService.getAllFeeds();
   }
 
+  @Query(() => Feed, { name: 'feed' })
+  findOne(@Args('feed_id') id: string) {
+    return this.feedService.getFeedById(id);
+  }
+
   @Mutation((returns) => Feed, { name: 'addFeed' })
   async addFeed(@Args('newFeedDto') newFeedDto: NewFeedDto): Promise<Feed> {
     const feed = await this.feedService.createFeed(newFeedDto);

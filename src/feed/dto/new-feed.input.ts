@@ -1,3 +1,4 @@
+import { NewCommentDto } from './new-comment.input';
 import { Field, InputType } from '@nestjs/graphql';
 import { IsOptional, IsString, MaxLength } from 'class-validator';
 
@@ -18,8 +19,7 @@ export class NewFeedDto {
   @IsString()
   content?: string;
 
-  // TODO : 나중에 comment type dto 작업해서 바꿔주기
-  @Field(() => [Object], { nullable: true })
+  @Field(() => [NewCommentDto], { nullable: true })
   @IsOptional()
-  comments?: any;
+  comments?: [NewCommentDto];
 }

@@ -1,9 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as MongooseSchema } from 'mongoose';
-import { Document } from 'mongoose';
 
-export type CommentDocument = Comment & Document;
 @ObjectType({ description: 'comment' })
 @Schema({ timestamps: true })
 export class Comment {

@@ -5,7 +5,6 @@ import { Document } from 'mongoose';
 import { Comment } from './comment.schema';
 
 export type FeedDocument = Feed & Document;
-
 @ObjectType()
 @Schema({ timestamps: true })
 export class Feed {
@@ -29,7 +28,7 @@ export class Feed {
   creationDate: Date;
 
   @Field(() => String)
-  @Prop({ type: Comment, required: false })
+  @Prop({ type: Array<Comment>, required: false })
   comments: [Comment] | [];
 }
 

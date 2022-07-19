@@ -16,13 +16,8 @@ export class FeedResolver {
   }
 
   @Mutation((returns) => Feed, { description: 'feed' })
-  async addFeed(
-    @Args('writer') writer: string,
-    @Args('title') title: string,
-    @Args('content') content: string
-  ): Promise<Feed> {
-    const newFeedDNewFeedDtoData: NewFeedDto = { writer: writer, title: title, content: content };
-    const feed = await this.feedService.createFeed(newFeedDNewFeedDtoData);
+  async addFeed(@Args('newFeedDto') newFeedDto: NewFeedDto): Promise<Feed> {
+    const feed = await this.feedService.createFeed(newFeedDto);
     pubSub.publish('feedAdded', { feedAdded: feed });
     return feed;
   }

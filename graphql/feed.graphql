@@ -6,10 +6,10 @@ type Feed {
   title: String!
   content: String
   creationDate: Date!
-  comments: [Comment]
+  comments: [Comment] | []
 }
 
-type NewFeed {
+input NewFeed {
   writer: String!
   title: String!
   content: String
@@ -23,7 +23,7 @@ type Comment {
   creationDate: Date
 }
 
-type AddComment {
+input AddComment {
   writer: String!
   password: String!
   content: String

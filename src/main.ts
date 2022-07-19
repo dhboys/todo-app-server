@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { ConfigShared } from './common/services/config.shared';
-import { SharedModule } from './common/shared.module';
+import { CommonModule } from './common/common.module';
 import { setupSwagger } from './common/swagger/setup-swagger';
 
 async function bootstrap() {
@@ -12,7 +12,7 @@ async function bootstrap() {
 }
 
 const startServer = async (app: NestExpressApplication) => {
-  const config = app.select(SharedModule).get(ConfigShared);
+  const config = app.select(CommonModule).get(ConfigShared);
 
   await app.listen(config.APP.PORT);
   if (process.send) {

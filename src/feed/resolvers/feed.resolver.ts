@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Feed } from '../models/feed.model';
 import { PubSub } from 'graphql-subscriptions';
-import { NewFeed } from '../dto/new-feed.dto';
+import { NewFeedDto } from '../dto/new-feed.input';
+import { Feed } from '../schema/feed.schema';
 import { FeedService } from '../services/feed.service';
 
 const pubSub = new PubSub();
@@ -15,10 +15,15 @@ export class FeedResolver {
     return 'Hello World!';
   }
 
-  @Mutation((returns) => Feed)
-  async addFeed(@Args('newFeedData') newRecipeData: NewFeed): Promise<Feed> {
-    const recipe = await this.feedService.createFeed(newRecipeData);
-    pubSub.publish('recipeAdded', { recipeAdded: recipe });
-    return recipe;
+  @Mutation((returns) => Feed, { description: 'feed' })
+  async addFeed(
+    @Args('writer') writer: string,
+    @Args('title') title: string,
+    @Args('content') content: string
+  ): Promise<Feed> {
+    const newFeedDNewFeedDtoData: NewFeedDto = { writer: writer, title: title, content: content };
+    const feed = await this.feedService.createFeed(newFeedDNewFeedDtoData);
+    pubSub.publish('feedAdded', { feedAdded: feed });
+    return feed;
   }
 }

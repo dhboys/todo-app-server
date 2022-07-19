@@ -30,7 +30,7 @@ input AddComment {
 }
 
 type Query {
-  sayHello: String!
+  feeds: [Feed!]!
   # feed(id: String!): Feed!
   # feeds(skip: Int = 0, take: Int = 25): [Feed!]!
 }

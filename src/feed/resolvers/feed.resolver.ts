@@ -16,14 +16,21 @@ export class FeedResolver {
   }
 
   @Query(() => Feed, { name: 'feed' })
-  findOne(@Args('feed_id') id: string) {
+  findOne(@Args('feed_id', { type: () => String }) id: string) {
     return this.feedService.getFeedById(id);
   }
 
-  @Mutation((returns) => Feed, { name: 'addFeed' })
+  @Mutation((returns) => Feed, { name: 'add' })
   async addFeed(@Args('newFeedDto') newFeedDto: NewFeedDto): Promise<Feed> {
     const feed = await this.feedService.createFeed(newFeedDto);
     pubSub.publish('feedAdded', { feedAdded: feed });
     return feed;
+  }
+
+  @Mutation(() => Feed, { name: 'remove' })
+  async removeFeed(@Args('feed_id', { type: () => String }) id: string) {
+    const feed = await this.feedService.removeFeedById(id);
+    if (feed) return true;
+    else return false;
   }
 }

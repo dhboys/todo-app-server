@@ -31,4 +31,9 @@ export class FeedService {
 
     return feedData.save();
   }
+
+  async removeFeedById(id: string) {
+    const feed = await this.feedModel.findOne({ _id: id }).exec();
+    return feed.remove();
+  }
 }

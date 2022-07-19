@@ -10,12 +10,12 @@ const pubSub = new PubSub();
 export class FeedResolver {
   constructor(private readonly feedService: FeedService) {}
 
-  @Query((returns) => String)
-  sayHello(): string {
-    return 'Hello World!';
+  @Query(() => [Feed], { name: 'feeds' })
+  findAll() {
+    return this.feedService.getAllFeeds();
   }
 
-  @Mutation((returns) => Feed, { description: 'feed' })
+  @Mutation((returns) => Feed, { name: 'addFeed' })
   async addFeed(@Args('newFeedDto') newFeedDto: NewFeedDto): Promise<Feed> {
     const feed = await this.feedService.createFeed(newFeedDto);
     pubSub.publish('feedAdded', { feedAdded: feed });

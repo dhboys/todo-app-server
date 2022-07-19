@@ -8,6 +8,10 @@ import { Feed } from '../schema/feed.schema';
 export class FeedService {
   constructor(@InjectModel(Feed.name) private readonly feedModel: Model<Feed>) {}
 
+  async getAllFeeds(): Promise<Feed[]> {
+    return await this.feedModel.find().exec();
+  }
+
   async createFeed(newFeedDto: NewFeedDto): Promise<Feed> {
     const feedData = new this.feedModel({
       writer: newFeedDto.writer,

@@ -36,6 +36,6 @@ type Query {
 }
 
 type Mutation {
-  addFeed(newFeed: NewFeed!): Feed!
-  removeFeed(id: NewFeed!): Boolean!
+  add(newFeed: NewFeed!): Feed!
+  remove(id: String!): Boolean!
 }

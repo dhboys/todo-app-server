@@ -23,13 +23,13 @@ export class Feed {
   @Prop({ type: String, required: false })
   content?: string;
 
-  @Field(() => Date)
-  @Prop({ type: Date, required: true })
-  creationDate: Date;
+  @Field(() => Date, { defaultValue: new Date() })
+  @Prop({ type: Date })
+  creationDate?: Date;
 
-  @Field(() => String)
-  @Prop({ type: Array<Comment>, required: false })
-  comments: [Comment] | [];
+  @Field(() => [Comment], { defaultValue: [] })
+  @Prop({ type: Array<Comment> })
+  comments?: [Comment] | [];
 }
 
 export const FeedSchema = SchemaFactory.createForClass(Feed);

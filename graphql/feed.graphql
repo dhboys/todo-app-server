@@ -23,7 +23,7 @@ type Comment {
   creationDate: Date
 }
 
-input AddComment {
+input NewComment {
   writer: String!
   password: String!
   content: String
@@ -36,6 +36,9 @@ type Query {
 }
 
 type Mutation {
-  add(newFeed: NewFeed!): Feed!
-  remove(id: String!): Boolean!
+  addFeed(newFeed: NewFeed!): Feed!
+  updateFeed( updateFeed: Feed!): Feed!
+  removeFeed(id: String!): Boolean!
+  removeAll: Void
+  # addComment(newComment: NewComment!): Comment!
 }

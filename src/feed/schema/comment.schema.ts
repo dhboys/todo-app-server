@@ -20,9 +20,9 @@ export class Comment {
   @Prop({ type: String })
   content?: string;
 
-  @Field(() => Date)
+  @Field(() => Date, { defaultValue: new Date() }) //defaultValue 를 @Field에서 선언해주면 된다
   @Prop({ type: Date })
-  creationDate: Date = new Date();
+  creationDate: Date;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

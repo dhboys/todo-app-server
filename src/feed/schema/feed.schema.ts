@@ -23,12 +23,12 @@ export class Feed {
   @Prop({ type: String, required: false })
   content?: string;
 
-  @Field(() => Date)
-  @Prop({ type: Date, required: true })
-  creationDate: Date;
+  @Field(() => Date, { defaultValue: new Date() })
+  @Prop({ type: Date })
+  creationDate?: Date;
 
-  @Field(() => [Comment])
-  @Prop({ type: Array<Comment>, required: false })
+  @Field(() => [Comment], { defaultValue: [] })
+  @Prop({ type: Array<Comment> })
   comments?: [Comment] | [];
 }
 

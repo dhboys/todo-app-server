@@ -22,14 +22,7 @@ export class FeedService {
   }
 
   async createFeed(newFeedDto: NewFeedDto): Promise<Feed> {
-    const feedData = new this.feedModel({
-      writer: newFeedDto.writer,
-      title: newFeedDto.title,
-      content: newFeedDto.content,
-      creationDate: new Date(),
-      comments: [],
-    });
-
+    const feedData = new this.feedModel(newFeedDto);
     return feedData.save();
   }
 

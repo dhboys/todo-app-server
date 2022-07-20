@@ -22,7 +22,7 @@ export class Comment {
 
   @Field(() => Date)
   @Prop({ type: Date })
-  creationDate: Date;
+  creationDate: Date = new Date();
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

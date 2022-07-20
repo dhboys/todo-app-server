@@ -27,9 +27,9 @@ export class Feed {
   @Prop({ type: Date, required: true })
   creationDate: Date;
 
-  @Field(() => String)
+  @Field(() => [Comment])
   @Prop({ type: Array<Comment>, required: false })
-  comments: [Comment] | [];
+  comments?: [Comment] | [];
 }
 
 export const FeedSchema = SchemaFactory.createForClass(Feed);
